@@ -16,4 +16,20 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
         return "User has been created";
     }
+
+    @Override
+    public String deleteUser(User user) {
+        userRepository.delete(user);
+        return "User was deleted. :(";
+    }
+
+    @Override
+    public User findById(long id) {
+        return userRepository.findById(id);
+    }
+
+    @Override
+    public void save(User user) {
+        userRepository.save(user);
+    }
 }
