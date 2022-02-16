@@ -31,8 +31,9 @@ public class UserController {
         userService.save(existingUser);
     }
 
-    @DeleteMapping(path="/")//delete
-    String deleteUser(@RequestBody User user) {
+    @DeleteMapping//delete
+    String deleteUser(@RequestBody Long id) {
+        User user = userService.findById(id);
         return userService.deleteUser(user);
     }
 }
