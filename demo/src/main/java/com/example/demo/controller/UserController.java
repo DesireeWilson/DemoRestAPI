@@ -12,24 +12,24 @@ public class UserController {
     @Autowired
     public UserService userService;
 
-    @PostMapping(path="/")//create
+    @PostMapping//create
     String createUser(@RequestBody User user) {
         return userService.createUser(user);
     }
 
-    @GetMapping(path="/")//retrieve
+    @GetMapping//retrieve
     User getRequest() {
         return new User("Desiree", "Wilson", 34);
     }
 
-    @PutMapping(path="/")//update
+    @PutMapping//update
     void updateUserFirstName(Long id, @RequestBody String firstName) {
         User user = userService.findById(id);
         user.setFirstName(firstName);
         userService.save(user);
     }
 
-    @PutMapping(path="/")//update
+    @PutMapping//update
     void updateUserLasttName(Long id, @RequestBody String lastName) {
         User user = userService.findById(id);
         user.setLastName(lastName);
