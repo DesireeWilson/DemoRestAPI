@@ -23,24 +23,12 @@ public class UserController {
     }
 
     @PutMapping//update
-    void updateUserFirstName(Long id, @RequestBody String firstName) {
-        User user = userService.findById(id);
-        user.setFirstName(firstName);
-        userService.save(user);
-    }
-
-    @PutMapping//update
-    void updateUserLasttName(Long id, @RequestBody String lastName) {
-        User user = userService.findById(id);
-        user.setLastName(lastName);
-        userService.save(user);
-    }
-
-    @PutMapping(path="/")//update
-    void updateUserAge(Long id, @RequestBody int age) {
-        User user = userService.findById(id);
-        user.setAge(age);
-        userService.save(user);
+    void updateUser(Long id, @RequestBody User updateUser) {
+        User existingUser = userService.findById(id);
+        existingUser.setFirstName(updateUser.getFirstName());
+        existingUser.setLastName(updateUser.getLastName());
+        existingUser.setAge(updateUser.getAge());
+        userService.save(existingUser);
     }
 
     @DeleteMapping(path="/")//delete
