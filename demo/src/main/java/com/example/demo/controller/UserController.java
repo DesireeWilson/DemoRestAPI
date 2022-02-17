@@ -12,17 +12,17 @@ public class UserController {
     @Autowired
     public UserService userService;
 
-    @PostMapping//create
+    @PostMapping
     String createUser(@RequestBody User user) {
         return userService.createUser(user);
     }
 
-    @GetMapping//retrieve
+    @GetMapping
     User getRequest() {
         return new User("Desiree", "Wilson", 34);
     }
 
-    @PutMapping//update
+    @PutMapping
     void updateUser(Long id, @RequestBody User updateUser) {
         User existingUser = userService.findById(id);
         existingUser.setFirstName(updateUser.getFirstName());
@@ -31,7 +31,7 @@ public class UserController {
         userService.save(existingUser);
     }
 
-    @DeleteMapping//delete
+    @DeleteMapping
     String deleteUser(@RequestBody Long id) {
         User user = userService.findById(id);
         return userService.deleteUser(user);
