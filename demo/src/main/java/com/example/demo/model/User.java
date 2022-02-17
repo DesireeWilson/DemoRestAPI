@@ -13,8 +13,7 @@ public class User {
     private String lastName;
     @Column
     private int age;
-
-    public User() {}
+    
     public User(String firstName, String lastName, int age) {
         super();
         this.firstName = firstName;
