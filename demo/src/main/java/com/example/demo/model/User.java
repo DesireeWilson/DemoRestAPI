@@ -13,12 +13,15 @@ public class User {
     private String lastName;
     @Column
     private int age;
-    
+
     public User(String firstName, String lastName, int age) {
-        super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
+    }
+
+    public User(User user) {
+        this(user.getFirstName(), user.getLastName(), user.getAge());
     }
 
     public String getFirstName() {
