@@ -40,7 +40,7 @@ public class UserController {
     }
 
     @DeleteMapping
-    String deleteUser(@RequestBody Long id) {
+    boolean deleteUser(@RequestBody Long id) {
         User user = userService.findById(id);
         return userService.deleteUser(user);
     }

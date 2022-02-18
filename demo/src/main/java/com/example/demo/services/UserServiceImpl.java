@@ -22,13 +22,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public String createUser(User user) {
         userRepository.save(user);
-        return "User has been created";
+        return "User was created";
     }
 
     @Override
-    public String deleteUser(User user) {
+    public boolean deleteUser(User user) {
         userRepository.delete(user);
-        return "User was deleted. :(";
+        if(userRepository.findById(user.getId()) == null) {
+            System.out.println("User was deleted");
+            return true;
+        } else {
+            System.out.println("Oh no! Something went wrong!");
+            return false;
+        }
     }
 
     @Override
