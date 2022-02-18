@@ -5,9 +5,11 @@ import com.example.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
-@RequestMapping(path="api/v1/user")
+@RequestMapping(path="api/v1/users")
 public class UserController {
 
     @Autowired
@@ -19,8 +21,13 @@ public class UserController {
     }
 
     @GetMapping
-    User getRequest() {
-        return new User("Desiree", "Wilson", 34);
+    List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
+    @GetMapping(path="/{id}")
+    User getUser(@PathVariable Long id) {
+        return userService.findById(id);
     }
 
     @PutMapping

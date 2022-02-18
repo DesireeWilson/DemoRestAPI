@@ -7,11 +7,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column
+
     private String firstName;
-    @Column
+
     private String lastName;
-    @Column
+
     private int age;
 
     public User(String firstName, String lastName, int age) {
@@ -20,8 +20,18 @@ public class User {
         this.age = age;
     }
 
+    public User() {}
+
     public User(User user) {
         this(user.getFirstName(), user.getLastName(), user.getAge());
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -51,7 +61,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "firstName='" + firstName + '\'' +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
                 '}';
