@@ -21,8 +21,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String createUser(User user) {
-        userRepository.save(user);
-        return "User was created";
+        if (userExists(user) == false) {
+            userRepository.save(user);
+            return "User was created";
+        }
+        return "User already exists";
     }
 
     @Override
@@ -46,5 +49,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(User user) {
         userRepository.save(user);
+    }
+
+    @Override
+    public boolean userExists(User user) {
+        return getAllUsers().contains(user);
     }
 }

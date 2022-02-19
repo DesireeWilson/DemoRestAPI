@@ -11,4 +11,5 @@ public interface UserService {
     boolean deleteUser(User user);
     User findById(Long id);
     void save(User user);
+    boolean userExists(User user);
 }
