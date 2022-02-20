@@ -15,6 +15,8 @@ public class User {
 
     private int age;
 
+    private String email;
+
     public User(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;

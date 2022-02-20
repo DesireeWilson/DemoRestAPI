@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String createUser(User user) {
-        if (userExists(user) == false) {
+        if (!userExists(user)) {
             userRepository.save(user);
             return "User was created";
         }
