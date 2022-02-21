@@ -26,18 +26,21 @@ public class ApiDemoApplication {
 		ruslan.setFirstName("Ruslan");
 		ruslan.setLastName("Zinovyev");
 		ruslan.setAge(37);
+		ruslan.setEmailAddress("ruslan.zinovyev@gmail.com");
 
 		User desiree = new User();
 		desiree.setId(2L);
 		desiree.setFirstName("Desiree");
 		desiree.setLastName("Wilson");
 		desiree.setAge(19);
+		desiree.setEmailAddress("desiree.wilson@gmail.com");
 
 		User john = new User();
 		john.setId(3L);
 		john.setFirstName("John");
 		john.setLastName("Doe");
 		john.setAge(30);
+		john.setEmailAddress("john.doe@gmail.com");
 
 		users.add(ruslan);
 		users.add(desiree);

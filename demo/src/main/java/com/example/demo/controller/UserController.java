@@ -25,9 +25,14 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping(path="/{id}")
+    @GetMapping(path="id/{id}")
     User getUser(@PathVariable Long id) {
         return userService.findById(id);
+    }
+
+    @GetMapping(path="/emailAddress/{emailAddress}")
+    User getUserByEmailAddress(@PathVariable String emailAddress) {
+        return userService.findByEmailAddress(emailAddress);
     }
 
     @PutMapping
@@ -36,6 +41,7 @@ public class UserController {
         existingUser.setFirstName(updateUser.getFirstName());
         existingUser.setLastName(updateUser.getLastName());
         existingUser.setAge(updateUser.getAge());
+        existingUser.setEmailAddress(updateUser.getEmailAddress());
         userService.save(existingUser);
     }
 

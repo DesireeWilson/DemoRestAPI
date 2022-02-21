@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -47,12 +48,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findByEmailAddress(String emailAddress) {
+        return userRepository.findByEmailAddress(emailAddress);
+    }
+
+    @Override
     public void save(User user) {
         userRepository.save(user);
     }
 
     @Override
     public boolean userExists(User user) {
-        return getAllUsers().contains(user);
+        User searchUserEmail = findByEmailAddress(user.getEmailAddress());
+        return !Objects.isNull(searchUserEmail);
     }
 }

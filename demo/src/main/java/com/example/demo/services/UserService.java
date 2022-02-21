@@ -10,6 +10,7 @@ public interface UserService {
     String createUser(User user);
     boolean deleteUser(User user);
     User findById(Long id);
+    User findByEmailAddress(String emailAddress);
     void save(User user);
     boolean userExists(User user);
 }

@@ -8,25 +8,26 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    @Column
     private String firstName;
-
+    @Column
     private String lastName;
-
+    @Column
     private int age;
+    @Column
+    private String emailAddress;
 
-    private String email;
-
-    public User(String firstName, String lastName, int age) {
+    public User(String firstName, String lastName, int age, String emailAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
+        this.emailAddress = emailAddress;
     }
 
     public User() {}
 
     public User(User user) {
-        this(user.getFirstName(), user.getLastName(), user.getAge());
+        this(user.getFirstName(), user.getLastName(), user.getAge(), user.getEmailAddress());
     }
 
     public Long getId() {
@@ -59,6 +60,14 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String email) {
+        this.emailAddress = email;
     }
 
     @Override
