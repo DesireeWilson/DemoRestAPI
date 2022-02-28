@@ -25,8 +25,8 @@ public class User {
     @Pattern(regexp="^[a-zA-Z]*$", message="Last name should only contain letters.")
     private String lastName;
     @Column
-    @Min(value=18)
-    @Max(value=130)
+    @Min(value=18, message="Age must be at least 18 years old.")
+    @Max(value=130, message="Ages cannot be greater than 130.")
     private int age;
     @Column
     @NotBlank(message="Email address shouldn't be empty")
