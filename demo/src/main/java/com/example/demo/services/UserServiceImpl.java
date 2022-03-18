@@ -3,9 +3,11 @@ package com.example.demo.services;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -16,8 +18,9 @@ public class UserServiceImpl implements UserService {
     public UserRepository userRepository;
 
     @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public Page<User> getAllUsers(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return userRepository.findAll(pageable);
     }
 
     @Override
@@ -32,7 +35,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean deleteUser(User user) {
         userRepository.delete(user);
-        if(userRepository.findById(user.getId()) == null) {
+        if(!userRepository.findById(user.getId()).isPresent()) {
             System.out.println("User was deleted");
             return true;
         } else {

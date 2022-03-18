@@ -1,33 +1,34 @@
 package com.example.demo.model;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "users", schema = "public")
+@Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "incrementDomain")
-    @GenericGenerator(name = "incrementDomain", strategy = "increment")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Long id;
+
     @Column
     @NotBlank(message="First name shouldn't be empty")
     @Size(min=2, message="First name must be at least 2 letters long")
     @Pattern(regexp="^[a-zA-Z]*$", message="First name should only contain letters.")
     private String firstName;
+
     @Column
     @NotBlank(message="Last name shouldn't be empty")
     @Size(min=2, message="Last name must be at least 2 letters long")
     @Pattern(regexp="^[a-zA-Z]*$", message="Last name should only contain letters.")
     private String lastName;
+
     @Column
     @Min(value=18, message="Age must be at least 18 years old.")
     @Max(value=130, message="Ages cannot be greater than 130.")
     private int age;
+
     @Column
     @NotBlank(message="Email address shouldn't be empty")
     private String emailAddress;
