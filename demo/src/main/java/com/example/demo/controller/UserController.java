@@ -25,7 +25,7 @@ public class UserController {
         HttpHeaders header = new HttpHeaders();
         header.add("desc", "Creating User!");
         userService.createUser(user);
-        return new ResponseEntity<>(body, header, HttpStatus.OK);
+        return new ResponseEntity<>(body, header, HttpStatus.CREATED);
     }
 
     @GetMapping
